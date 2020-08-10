@@ -43,10 +43,6 @@ const ARTICLES = [
   },
 ];
 
-ARTICLES.sort(function (a, b) {
-  return b.upvotes - a.upvotes;
-});
-
 ReactDOM.render(<App articles={ARTICLES} />, document.getElementById('root'));
 registerServiceWorker();
 

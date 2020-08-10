@@ -8,7 +8,9 @@ const title = "Sorting Articles";
 
 class App extends React.Component {
   state = {
-    articles: this.props.articles,
+    articles: this.props.articles.sort(function (a, b) {
+      return b.upvotes - a.upvotes;
+    }),
   };
 
   onSortVote = () => {
