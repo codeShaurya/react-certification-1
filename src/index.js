@@ -7,14 +7,14 @@ import {applyPolyfills, defineCustomElements} from 'h8k-components/loader';
 
 const ARTICLES = [
   {
-    title: "Alphabet earnings",
-    upvotes: 22,
-    date: "2011-11-23",
-  },
-  {
     title: "Artificial Mountains",
     upvotes: 200,
     date: "2019-11-23",
+  },
+  {
+    title: "Alphabet earnings",
+    upvotes: 22,
+    date: "2011-11-23",
   },
   {
     title: "Scaling to 100k Users",
