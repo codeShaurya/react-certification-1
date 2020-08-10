@@ -6,20 +6,60 @@ import Articles from './components/Articles';
 
 const title = "Sorting Articles";
 
-function App({articles}) {
+class App extends React.Component {
+  state = {
+    articles: this.props.articles,
+  };
 
+  onSortVote = () => {
+    const { articles } = this.state;
+    articles.sort(function (a, b) {
+      return a.upvotes - b.upvotes;
+    });
+
+    this.setState({ articles });
+  };
+
+  onSortDate = () => {
+    const { articles } = this.state;
+
+    articles.sort(function (a, b) {
+        var dateA = new Date(a.date);
+        var dateB = new Date(b.date);
+        return dateB - dateA;
+    });
+
+    this.setState({ articles });
+  };
+
+  render() {
+    const { articles } = this.state;
     return (
-        <div className="App">
-            <h8k-navbar header={title}></h8k-navbar>
-            <div className="layout-row align-items-center justify-content-center my-20 navigation">
-                <label className="form-hint mb-0 text-uppercase font-weight-light">Sort By</label>
-                <button data-testid="most-upvoted-link" className="small">Most Upvoted</button>
-                <button data-testid="most-recent-link" className="small">Most Recent</button>
-            </div>
-            <Articles articles={articles}/>
+      <div className="App">
+        <h8k-navbar header={title}></h8k-navbar>
+        <div className="layout-row align-items-center justify-content-center my-20 navigation">
+          <label className="form-hint mb-0 text-uppercase font-weight-light">
+            Sort By
+          </label>
+          <button
+            data-testid="most-upvoted-link"
+            className="small"
+            onClick={this.onSortVote}
+          >
+            Most Upvoted
+          </button>
+          <button
+            data-testid="most-recent-link"
+            className="small"
+            onClick={this.onSortDate}
+          >
+            Most Recent
+          </button>
         </div>
+        <Articles articles={articles} />
+      </div>
     );
-
+  }
 }
 
 export default App;
