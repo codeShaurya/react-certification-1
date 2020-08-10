@@ -14,7 +14,7 @@ class App extends React.Component {
   onSortVote = () => {
     const { articles } = this.state;
     articles.sort(function (a, b) {
-      return a.upvotes - b.upvotes;
+      return b.upvotes - a.upvotes;
     });
 
     this.setState({ articles });
